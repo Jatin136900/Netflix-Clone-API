@@ -154,23 +154,3 @@ section h1 {
     height: 50vh;
     z-index: 2;
 }
-
-
-@media (max-width: 768px) {
-    .movies img {
-        height: 220px;
-    }
-
-    #banner {
-        height: 60vh;
-        padding: 1.5rem;
-    }
-
-    #banner h1 {
-        font-size: 2rem;
-    }
-
-    section h1 {
-        font-size: 1.5rem;
-    }
-}
