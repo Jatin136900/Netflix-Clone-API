@@ -105,20 +105,36 @@ section h1 {
 
 
 .category {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+     display: flex;
+    overflow-x: auto;
     gap: 1.2rem;
-    margin-bottom: 3rem;
-    z-index: 5;
+    padding-bottom: 1rem;
+    scroll-behavior: smooth;
+    margin-bottom: 20px;
+}
+
+
+.category::-webkit-scrollbar {
+    height: 3px;
+}
+
+.category::-webkit-scrollbar-thumb {
+    background: #e50914;
+    border-radius: 50px;
+}
+
+.category::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .movies {
+    flex: 0 0 auto;
+    width: 180px;
     background-color: #1c1c1c;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    z-index: 5;
     
 }
 
