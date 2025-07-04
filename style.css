@@ -171,3 +171,28 @@ section h1 {
     height: 50vh;
     z-index: 2;
 }
+
+
+#searchInput {
+    width: 45%;
+    padding: 15px 20px 15px 40px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+#searchInput:focus {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.422);
+}

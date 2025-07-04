@@ -1,4 +1,7 @@
 const section = document.querySelector("section");
+const searchInput = document.getElementById("searchInput");
+const banner = document.getElementById("banner");
+
 const API_KEY = "d5af395b4be1c79f620c2434de653f06";
 const BASE_URL = "https://api.themoviedb.org/3";
 
@@ -15,39 +18,40 @@ const urls = {
     documentaries: BASE_URL + "/discover/movie?api_key=" + API_KEY + "&with_genres=99"
 };
 
-
 function setRandomBanner(movies) {
-    const banner = document.getElementById("banner");
-
     if (!movies || movies.length === 0) return;
 
     const randomMovie = movies[Math.floor(Math.random() * movies.length)];
 
-    banner.style.backgroundImage = "url(https://image.tmdb.org/t/p/original" + randomMovie.backdrop_path;
+    banner.style.backgroundImage = "url(https://image.tmdb.org/t/p/original" + randomMovie.backdrop_path + ")";
 
-    const data=document.createElement("div");
-    data.classList.add("fire")
+    const data = document.createElement("div");
+    data.classList.add("fire");
+
     const title = document.createElement("h1");
     const para = document.createElement("p");
-    title.textContent = randomMovie.title
-    para.textContent = randomMovie.overview
-    data.append(title,para)
-    console.log(title);
+
+    title.textContent = randomMovie.title || randomMovie.name;
+    para.textContent = randomMovie.overview;
+
+    data.append(title, para);
     banner.append(data);
 
-
-    console.log(movies);
-
+    
 }
 
 async function fetchAllCategories() {
     try {
-        const responses = await Promise.all(Object.values(urls).map(url => fetch(url)));
-        const data = await Promise.all(responses.map(res => res.json()));
+        const responses = await Promise.all(Object.values(urls).map(function (url) {
+            return fetch(url);
+        }));
+        const data = await Promise.all(responses.map(function (res) {
+            return res.json();
+        }));
 
         const categories = Object.keys(urls);
 
-        categories.forEach((category, index) => {
+        categories.forEach(function (category, index) {
             const results = data[index].results;
             if (category === "popular") {
                 setRandomBanner(results);
@@ -58,6 +62,8 @@ async function fetchAllCategories() {
     } catch (error) {
         console.error("Error fetching movie categories:", error);
     }
+
+
 }
 
 function showData(movies, category) {
@@ -68,7 +74,7 @@ function showData(movies, category) {
     const container = document.createElement("div");
     container.classList.add("category");
 
-    movies.forEach((movie) => {
+    movies.forEach(function (movie) {
         const parent = document.createElement("div");
         parent.classList.add("movies");
 
@@ -93,5 +99,48 @@ function showData(movies, category) {
     section.append(container);
 }
 
+async function searchMovies(query) {
+    section.innerHTML = "";
+    banner.innerHTML = "";
 
+    const searchUrl = BASE_URL + "/search/movie?api_key=" + API_KEY + "&language=en-US&query=" + encodeURIComponent(query) + "&page=1&include_adult=false";
+
+    try {
+        section.innerHTML = "<h2>Loading...</h2>";
+
+        const res = await fetch(searchUrl);
+        const data = await res.json();
+        const results = data.results;
+
+        section.innerHTML = ""; // clear loading message
+
+        if (results.length > 0) {
+            showData(results, 'Search results for "' + query + '"');
+        } else {
+            section.innerHTML = "<h2>No results found for \"" + query + "\"</h2>";
+        }
+    } catch (error) {
+        console.error("Search error:", error);
+    }
+}
+let searchTimeout;
+
+searchInput.addEventListener("input", function () {
+    const query = searchInput.value.trim();
+
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        if (query.length > 0) {
+            searchMovies(query);
+        } else {
+            section.innerHTML = "";
+            banner.innerHTML = "";
+            fetchAllCategories();
+        }
+    }, 500);
+});
 fetchAllCategories();
+
+
+  
+
