@@ -1,155 +1,162 @@
-/* Smartphones: 320px - 570px */
+/* Small Phones (320px - 570px) */
 @media screen and (min-width: 320px) and (max-width: 570px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1rem;
-    }
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
 
-    .netflix, .C {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
-    }
+  .netflix,
+  .C {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
 
-    #banner {
-        height: 60vh;
-        padding: 1rem;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
+  .netflix img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    top: -19px;
+  }
 
-    #banner h1 {
-        font-size: 1.5rem;
-    }
+  .C img{
+    position: absolute;
+    right: 0;
+    top: -115px;
+  }
 
-    #banner p {
-        width: 100%;
-        font-size: 0.9rem;
-    }
+  #searchInput {
+    width: 90%;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
 
-    section h1 {
-        font-size: 1.2rem;
-    }
+  #banner {
+    height: 60vh;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 
-    .category {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding-bottom: 1rem;
-    }
+  #banner h1 {
+    font-size: 1.5rem;
+  }
 
-    .movies {
-        flex: 0 0 auto;
-        width: 150px;
-    }
+  #banner p {
+    font-size: 0.9rem;
+    width: 100%;
+  }
 
-    .movies img {
-        height: 200px;
-    }
+  section h1 {
+    font-size: 1.3rem;
+    padding-left: 8px;
+  }
 
-    .movies h2 {
-        font-size: 0.9rem;
-    }
+  .movies {
+    width: 140px;
+  }
 
-    .movies p {
-        font-size: 0.75rem;
-    }
+  .movies img {
+    height: 200px;
+  }
+
+  .movies h2 {
+    font-size: 0.9rem;
+  }
+
+  .movies p {
+    font-size: 0.75rem;
+  }
 }
 
-/* Tablets: 570px - 768px */
+/* Tablets (570px - 768px) */
 @media screen and (min-width: 570px) and (max-width: 768px) {
-    header {
-        padding: 1.2rem 2rem;
-    }
+  header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
 
-    #banner {
-        height: 75vh;
-        padding: 1.5rem;
-        text-align: left;
-    }
+  .netflix,
+  .C {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 
-    #banner h1 {
-        font-size: 2rem;
-    }
+  #searchInput {
+    width: 80%;
+    font-size: 1rem;
+  }
 
-    #banner p {
-        width: 80%;
-        font-size: 1rem;
-    }
+  #banner {
+    height: 70vh;
+    padding: 1.5rem;
+    text-align: center;
+  }
 
-    section h1 {
-        font-size: 1.5rem;
-    }
+  #banner h1 {
+    font-size: 2rem;
+  }
 
-    .category {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding-bottom: 1rem;
-    }
+  #banner p {
+    width: 90%;
+    font-size: 1rem;
+  }
 
-    .movies {
-        flex: 0 0 auto;
-        width: 160px;
-    }
+  .movies {
+    width: 160px;
+  }
 
-    .movies img {
-        height: 230px;
-    }
+  .movies img {
+    height: 230px;
+  }
+
+  .movies h2 {
+    font-size: 1rem;
+  }
 }
 
-
-/* Small Laptops / iPads: 768px - 1024px */
+/* Tablets/Laptops (768px - 1024px) */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    header {
-        padding: 1.5rem 2.5rem;
-    }
+  header {
+    padding: 1.5rem 2rem;
+  }
 
-    #banner {
-        height: 85vh;
-        padding: 2rem;
-    }
+  #searchInput {
+    width: 60%;
+    font-size: 1.1rem;
+  }
 
-    #banner h1 {
-        font-size: 2.2rem;
-    }
+  #banner {
+    height: 80vh;
+    padding: 2rem;
+  }
 
-    #banner p {
-        font-size: 1.05rem;
-        width: 70%;
-    }
+  #banner h1 {
+    font-size: 2.2rem;
+  }
 
-    section h1 {
-        font-size: 1.75rem;
-    }
+  #banner p {
+    font-size: 1.1rem;
+    width: 75%;
+  }
 
-    .category {
-        display: flex;
-        overflow-x: auto;
-        gap: 1rem;
-        padding-bottom: 1rem;
-    }
-    .category::-webkit-scrollbar {
-    height: 8px;
-}
+  .movies {
+    width: 180px;
+  }
 
-.category::-webkit-scrollbar-thumb {
-    background-color: #e50914;
-    border-radius: 10px;
-}
+  .movies img {
+    height: 250px;
+  }
 
-.category::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-    .movies {
-        flex: 0 0 auto;
-        width: 170px;
-    }
-
-    .movies img {
-        height: 250px;
-    }
+  .movies h2 {
+    font-size: 1rem;
+  }
 }
